@@ -46,12 +46,14 @@ export async function POST(request: Request) {
       domain: "com",
       query: search,
       pages: Number(pages) | 1,
+
       parse: true,
       context: filters,
     }),
   });
 
   const data = await response.json();
+  console.log("🚀 ~ file: route.ts:55 ~ POST ~ data:", response);
 
   const pageResult: PageResult = data.results;
 

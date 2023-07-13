@@ -14,7 +14,7 @@ const ResultList = ({ results, term }: Props) => {
       <div className="w-36 md:w-64">
         {results.map((pageRes) => (
           <div key={pageRes.job_id} className="space-y-2">
-            {pageRes.content.results.filters?.map((filter, i) => (
+            {pageRes?.content?.results?.filters?.map((filter, i) => (
               <div key={i} className="border rounded-r-lg md:rounded-lg p-5">
                 <p className="font-bold">{filter.name}</p>
 
@@ -70,7 +70,6 @@ const ResultList = ({ results, term }: Props) => {
                   item.url.includes("url?url=") && "italic"
                 } `}
               >
-                
                 <div className="border-b p-5 flex-1">
                   <p className="text-[#1b66d2]">{item.title}</p>
                 </div>

@@ -1,5 +1,7 @@
+import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 
 const SEARCHES = [
   {
@@ -95,11 +97,13 @@ const SEARCHES = [
   // Add more search objects if needed
 ];
 
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession(authOptions);
+
   return (
     <div className="p-10 pt-0 text-center md:text-left">
       <h1 className="text-3xl font-extralight mb-5">
-        Welcome to Google Shopping
+        Welcome {session?.user?.name}, to Google Shopping
       </h1>
       <h2 className="mb-5">
         Get start by clicking the example or type in the search box

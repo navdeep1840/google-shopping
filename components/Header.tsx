@@ -13,7 +13,9 @@ import Avatar from "react-avatar";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-type Props = {};
+type Props = {
+  user: any;
+};
 
 const SORT_BY_MAP = {
   r: "Default",
@@ -22,7 +24,7 @@ const SORT_BY_MAP = {
   pd: "By Price (high to low)",
 };
 
-const Header = (props: Props) => {
+const Header = ({ user }: Props) => {
   const [pages, setPages] = useState("");
 
   const [sortBy, setSortBy] = useState("r");
@@ -129,7 +131,11 @@ const Header = (props: Props) => {
 
       {/* avator */}
       <div className="hidden lg:flex  flex-1 justify-end">
-        <Avatar name="Nav" round size="50" />
+        <Link href={"/api/auth/signin"}>
+          <button>
+            <Avatar name="Nav" round size="50" src={user?.image} />
+          </button>
+        </Link>
       </div>
     </header>
   );
